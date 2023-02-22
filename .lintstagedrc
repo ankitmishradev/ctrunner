@@ -1,0 +1,4 @@
+{
+  "*.{ts,tsx,js,jsx,json,cjs,mjs}": "eslint --fix",
+  "*.test.{ts,tsx,js,jsx}": "jest"
+}
