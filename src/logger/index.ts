@@ -1,3 +1,4 @@
-export { newLine, Line } from './new_line';
+export { Line } from './line';
 export { Icons } from './icons';
-export { timeStamp, Timer } from './time';
+export { Timer } from './time';
+export { colored } from './colored';
