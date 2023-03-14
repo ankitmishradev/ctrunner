@@ -1,4 +1,4 @@
-# ctrunner ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ankitmishradev/ctrunner/build.yml) [![CodeFactor](https://www.codefactor.io/repository/github/ankitmishradev/ctrunner/badge)](https://www.codefactor.io/repository/github/ankitmishradev/ctrunner) ![GitHub top language](https://img.shields.io/github/languages/top/ankitmishradev/ctrunner)
+# ctrunner ![npm](https://img.shields.io/npm/v/ctrunner) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ankitmishradev/ctrunner/build.yml) ![GitHub](https://img.shields.io/github/license/ankitmishradev/ctrunner)
 
 Run centralized tasks on inter-related or individual projects when a file system event (add, change, directory add, etc.) is received. Watcher is best suited to automatically handle common tasks while working on multiple projects simultaneously.
 
