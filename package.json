@@ -1,38 +1,56 @@
 {
   "name": "watcher",
   "version": "1.0.0",
-  "description": "",
+  "description": "Run centralized tasks on inter-related or individual projects when a file system event (add, change, directory add, etc.) is received.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Ankit Mishra",
-  "license": "ISC",
-  "scripts": {
-    "format": "prettier --write src/**/*",
-    "lint": "eslint src/**/* --fix",
-    "clean": "rimraf dist",
-    "test": "jest --passWithNoTests",
-    "prebuild": "npm run clean",
-    "build": "tsc && npm i -g",
-    "prepare": "husky install"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitmishradev/watcher.git"
   },
+  "bugs": {
+    "url": "https://github.com/ankitmishradev/watcher/issues"
+  },
+  "homepage": "https://github.com/ankitmishradev/watcher#readme",
+  "keywords": [
+    "cli",
+    "automation",
+    "fs",
+    "watcher"
+  ],
   "bin": {
     "watcher": "dist/index.js"
   },
   "files": [
     "dist"
   ],
+  "scripts": {
+    "format": "prettier --write src/**/*",
+    "lint": "eslint src/**/* --fix",
+    "clean": "rimraf dist",
+    "test": "jest --detectOpenHandles",
+    "prebuild": "npm run clean && npm t",
+    "build": "tsc",
+    "postbuild": "npm run lint",
+    "prepare": "husky install"
+  },
   "dependencies": {
     "anymatch": "^3.1.3",
     "chokidar": "^3.5.3",
     "colors": "^1.4.0",
-    "commander": "^10.0.0",
-    "term-size": "^3.0.2"
+    "commander": "^10.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -43,3 +61,4 @@
     "typescript": "^4.9.4"
   }
 }
+

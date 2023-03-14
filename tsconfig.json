@@ -13,10 +13,10 @@
     "strictBindCallApply": true,
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    // "noImplicitReturns": true,
     "skipLibCheck": true,
     "allowJs": true
   },
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts"],
+  "exclude": ["node_modules", "dist", "src/**/*.spec.ts"],
   "include": ["src/**/*"]
 }
