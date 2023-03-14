@@ -1,60 +1,48 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FSWatcher, WatchOptions } from 'chokidar';
-
-export interface Line {
-  write(text: string): void;
-  close(): void;
-  clean(): void;
-  loader(): void;
-  killLoader(): void;
-}
 
 export interface WatcherConfig {
   root: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   nodes: any;
   options: WatchOptions;
 }
-// export interface Task {
-//   name: TaskName;
-//   run: (node: NodeName) => void;
-// }
 
-export type Status = 'running' | 'done' | 'failed';
-
-export type EventName =
-  | 'add'
-  | 'addDir'
-  | 'change'
-  | 'unlink'
-  | 'unlinkDir'
-  | 'all';
+export type EventName = 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir';
 
 export interface Configuration {
   name: string;
   ignore: string[];
+  showEventOrigin: boolean;
 }
 
 export interface Batch {
   name: string;
   path: string;
   tasks: Task[];
+  ignore?: string[];
 }
 
 export interface Task {
   name: string;
-  command?: string;
-  function?: string;
-  event?: EventName[];
+  file: string;
+  events?: EventName[];
+  payload?: any;
+}
+
+export interface TaskOutput {
+  status: boolean;
+  error?: string;
+  message?: string;
+}
+
+export interface BatchMeta extends Batch {
+  event: EventName;
+  time: string;
+  eventOrigin: string;
 }
 
 export interface Store {
   config: Configuration;
   batches: Batch[];
   watcher: FSWatcher;
-  tasks: Task[];
-}
-
-export interface BatchMeta extends Batch {
-  event: EventName;
-  time: string;
 }

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { run } from './commands';
+import { Text } from './utils';
 
 const program = new Command();
 
-program.name('watcher').description('Watch for changes in dependency');
+program.name('watcher').description(Text.command.description);
 
 run(program);
 

@@ -1,7 +1,35 @@
-export const Paths = {
+export const Path = {
+  watcher: {
+    dir: `${process.cwd()}/.watcher`,
+    temp: `${process.cwd()}/.watcher/temp`,
+    config: `${process.cwd()}/.watcher/temp/config.js`,
+    batch: `${process.cwd()}/.watcher/temp/batches.js`,
+    tasks: `${process.cwd()}/.watcher/temp/tasks`,
+  },
   tsConfigFile: `${process.cwd()}/.watcher/tsconfig.json`,
-  tempDir: `${process.cwd()}/.watcher/temp`,
-  configFile: `${process.cwd()}/.watcher/temp/config.js`,
-  batchFile: `${process.cwd()}/.watcher/temp/batches.js`,
-  tasksDir: `${process.cwd()}/.watcher/temp/tasks`,
+  workers: {
+    creator: `${__dirname}/workers/creator.js`,
+    runner: `${__dirname}/workers/runner.js`,
+    logger: `${__dirname}/worker.js`,
+  },
+};
+
+export const Code = {
+  ignition: {
+    compile: 'IG01',
+    read: 'IG02',
+    clean: 'IG03',
+    chokidar: 'IG04',
+  },
+};
+
+export const Text = {
+  command: {
+    description:
+      'Run centralized tasks on individual or inter-related projects.',
+    options: {
+      initDesc: 'create watcher setup',
+      cleanDesc: 'clean up watcher',
+    },
+  },
 };

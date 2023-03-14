@@ -10,7 +10,7 @@ export class Line {
 
   constructor(tab?: true) {
     this._tab = tab ? '  ' : '';
-    this._worker = new Worker(Path.workers.logger);
+    this._worker = new Worker(`${__dirname}/worker.js`);
     process.stdout.write('\u001B[?25l');
   }
 

@@ -1,14 +1,13 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 
 import { Icons, Line } from '../../logger';
-import { Path } from '../../utils';
+import { Code, Path } from '../../utils';
 import { exitIgnition } from '../exit';
 
-export const clean = async (line: Line, cb: () => void) => {
+export const clean = async (line: Line) => {
   line.write(`${Icons.bullet} Cleaning temporary files`);
 
-  fs.unlink(Path.tsConfigFile, err => {
-    if (err) exitIgnition(line);
-    else cb();
-  });
+  fs.unlink(Path.tsConfigFile).catch(() =>
+    exitIgnition(line, Code.ignition.clean),
+  );
 };

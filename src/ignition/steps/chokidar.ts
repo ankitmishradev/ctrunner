@@ -5,7 +5,7 @@ import { Icons, Line } from '../../logger';
 
 import { store } from '../store';
 
-export const chokidar = (line: Line, cb: () => void) => {
+export const chokidar = (line: Line) => {
   const vertBorder = colors.cyan('---------------------');
   const message = colors.cyan(' Watcher is live now');
 
@@ -23,6 +23,4 @@ export const chokidar = (line: Line, cb: () => void) => {
     line.write(`\r${vertBorder}\n${message}\n${vertBorder}`);
     line.close();
   });
-
-  cb();
 };

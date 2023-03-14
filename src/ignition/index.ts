@@ -11,12 +11,13 @@ import { compile, read, clean, chokidar } from './steps';
  * - Remove `tsconfig.json` file.
  * - Initiate `chokidar` to watch for changes within root directory.
  */
-export const ignition = (cb: () => void) => {
+export const ignition = async () => {
   const line = new Line();
 
-  compile(line, () =>
-    read(line, () => clean(line, () => chokidar(line, () => cb()))),
-  );
+  await compile(line);
+  await read(line);
+  await clean(line);
+  chokidar(line);
 };
 
 export { store } from './store';
