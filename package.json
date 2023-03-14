@@ -31,7 +31,7 @@
     "lint": "eslint src/**/* --fix",
     "clean": "rimraf dist",
     "test": "jest --detectOpenHandles",
-    "prebuild": "npm run clean && npm t",
+    "prebuild": "npm t",
     "build": "tsc",
     "postbuild": "npm run lint && npm run format",
     "prepare": "husky install"
