@@ -1,5 +1,5 @@
 {
-  "name": "watcher",
+  "name": "ctrunner",
   "version": "1.0.0",
   "description": "Run centralized tasks on inter-related or individual projects when a file system event (add, change, directory add, etc.) is received.",
   "main": "dist/index.js",
@@ -8,20 +8,20 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ankitmishradev/watcher.git"
+    "url": "git+https://github.com/ankitmishradev/ctrunner.git"
   },
   "bugs": {
-    "url": "https://github.com/ankitmishradev/watcher/issues"
+    "url": "https://github.com/ankitmishradev/ctrunner/issues"
   },
-  "homepage": "https://github.com/ankitmishradev/watcher#readme",
+  "homepage": "https://github.com/ankitmishradev/ctrunner#readme",
   "keywords": [
     "cli",
     "automation",
     "fs",
-    "watcher"
+    "ctrunner"
   ],
   "bin": {
-    "watcher": "dist/index.js"
+    "ctrunner": "dist/index.js"
   },
   "files": [
     "dist"
@@ -33,7 +33,7 @@
     "test": "jest --detectOpenHandles",
     "prebuild": "npm run clean && npm t",
     "build": "tsc",
-    "postbuild": "npm run lint",
+    "postbuild": "npm run lint && npm run format",
     "prepare": "husky install"
   },
   "dependencies": {

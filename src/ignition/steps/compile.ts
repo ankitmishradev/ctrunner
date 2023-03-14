@@ -13,7 +13,7 @@ export const compile = async (line: Line) => {
   line.startLoader();
 
   return fs
-    .readdir(Path.watcher.dir)
+    .readdir(Path.ctrunner.dir)
     .then(() => createConfig(line))
     .then(() => runCommand(line))
     .catch(() => exitIgnition(line, Code.ignition.compile));
@@ -28,7 +28,7 @@ const createConfig = (line: Line) =>
     .catch(() => exitIgnition(line, Code.ignition.compile));
 
 const runCommand = (line: Line) =>
-  exec('npx -p typescript tsc', { cwd: '.watcher' }).catch(() =>
+  exec('npx -p typescript tsc', { cwd: '.ctrunner' }).catch(() =>
     exitIgnition(line, Code.ignition.compile),
   );
 

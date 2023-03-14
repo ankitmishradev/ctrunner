@@ -1,6 +1,5 @@
 import { Worker } from 'node:worker_threads';
 import readline from 'readline';
-import { Path } from '../utils';
 
 import { colored } from './colored';
 

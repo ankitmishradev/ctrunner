@@ -8,7 +8,7 @@ export const engine = () => {
   const runner = new Worker(`${__dirname}/workers/runner.js`);
   const manager = new Gaurd(runner);
 
-  store.watcher.on('all', (event, path) => {
+  store.ctrunner.on('all', (event, path) => {
     const batch = store.batches.find(batch => path.startsWith(batch.path));
     const relPath = path.substring(path.indexOf('\\') + 1);
     const shouldCheck =

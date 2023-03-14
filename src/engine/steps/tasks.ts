@@ -16,7 +16,7 @@ export const tasks = async (meta: BatchMeta) => {
       line.write(`${Icons.bullet} ${task.name}`);
       line.startLoader();
 
-      await import(`${Path.watcher.tasks}/${task.file}.js`)
+      await import(`${Path.ctrunner.tasks}/${task.file}.js`)
         .then(value => {
           return new Promise<TaskOutput>(resolve => {
             value.default(task.payload, resolve);

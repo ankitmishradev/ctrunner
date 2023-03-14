@@ -7,13 +7,13 @@ import { Icons } from '../../logger';
 const exec = promisify(execLegacy);
 const mockDir = path.resolve(process.cwd(), '__mocks__/clean');
 
-describe('Run watcher command with clean option', () => {
+describe('Run ctrunner command with clean option', () => {
   beforeAll(async () => {
-    await exec('watcher -i', { cwd: mockDir });
+    await exec('ctrunner -i', { cwd: mockDir });
   });
 
-  it('should clean watcher directory', async () => {
-    const cleanOutput = await exec('watcher -c', { cwd: mockDir });
+  it('should clean ctrunner directory', async () => {
+    const cleanOutput = await exec('ctrunner -c', { cwd: mockDir });
 
     expect(cleanOutput.stdout).toContain(Icons.check);
   });

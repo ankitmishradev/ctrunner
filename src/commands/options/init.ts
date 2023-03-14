@@ -7,10 +7,10 @@ import { Path } from '../../utils';
 const line = new Line();
 
 export const init = () => {
-  line.write(`${Icons.bullet} Setup watcher template`);
+  line.write(`${Icons.bullet} Setup ctrunner template`);
   line.startLoader();
 
-  fs.readdir(Path.watcher.dir)
+  fs.readdir(Path.ctrunner.dir)
     .then(() => exit(false))
     .catch(reason => (reason.code === 'ENOENT' ? undefined : exit(false)))
     .then(createDirectory)
@@ -22,20 +22,20 @@ export const init = () => {
 };
 
 const createDirectory = async () =>
-  fs.mkdir(Path.watcher.dir).catch(() => exit(false));
+  fs.mkdir(Path.ctrunner.dir).catch(() => exit(false));
 
 const createBatch = async () =>
   fs
-    .writeFile(`${Path.watcher.dir}/batches.js`, defaultBatches)
+    .writeFile(`${Path.ctrunner.dir}/batches.js`, defaultBatches)
     .catch(() => exit(false));
 
 const createConfig = async () =>
   fs
-    .writeFile(`${Path.watcher.dir}/config.js`, defaultConfig)
+    .writeFile(`${Path.ctrunner.dir}/config.js`, defaultConfig)
     .catch(() => exit(false));
 
 const createTasks = async () =>
-  fs.mkdir(`${Path.watcher.dir}/tasks`).catch(() => exit(false));
+  fs.mkdir(`${Path.ctrunner.dir}/tasks`).catch(() => exit(false));
 
 const exit = (pass: boolean) => {
   line.killLoader();

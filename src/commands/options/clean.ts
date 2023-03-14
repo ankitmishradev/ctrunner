@@ -6,9 +6,9 @@ import { Path } from '../../utils';
 const line = new Line();
 
 export const clean = () => {
-  line.write(`${Icons.bullet} Clean up watcher`);
+  line.write(`${Icons.bullet} Clean up ctrunner`);
   line.startLoader();
-  fs.readdir(Path.watcher.dir)
+  fs.readdir(Path.ctrunner.dir)
     .then(deleteTemp)
     .then(deleteConfig)
     .then(() => exit(true))
@@ -17,7 +17,7 @@ export const clean = () => {
 
 const deleteTemp = async () =>
   fs
-    .rm(Path.watcher.temp, { force: true, recursive: true })
+    .rm(Path.ctrunner.temp, { force: true, recursive: true })
     .catch(reason => (reason.code === 'ENOENT' ? undefined : exit(false)));
 
 const deleteConfig = async () =>

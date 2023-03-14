@@ -6,12 +6,12 @@ import { Icons, Line } from '../../logger';
 import { store } from '../store';
 
 export const chokidar = (line: Line) => {
-  const vertBorder = colors.cyan('---------------------');
-  const message = colors.cyan(' Watcher is live now');
+  const vertBorder = colors.cyan('------------------------------------');
+  const message = colors.cyan(' Centralized Task Runner is live now');
 
   line.write(`${Icons.bullet} Initiating watch`);
 
-  store.watcher = watch(process.cwd(), {
+  store.ctrunner = watch(process.cwd(), {
     persistent: true,
     ignoreInitial: true,
     cwd: '.',
@@ -19,7 +19,7 @@ export const chokidar = (line: Line) => {
 
   line.killLoader();
 
-  store.watcher.on('ready', () => {
+  store.ctrunner.on('ready', () => {
     line.write(`\r${vertBorder}\n${message}\n${vertBorder}`);
     line.close();
   });

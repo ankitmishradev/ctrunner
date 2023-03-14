@@ -7,21 +7,21 @@ import { Icons } from '../../logger';
 
 const exec = promisify(execLegacy);
 const mockDir = path.resolve(process.cwd(), '__mocks__/init');
-const watcherDir = path.resolve(mockDir, '.watcher');
+const watcherDir = path.resolve(mockDir, '.ctrunner');
 
-describe('Run watcher command with init option', () => {
+describe('Run ctrunner command with init option', () => {
   afterAll(async () => {
     await fs.rm(watcherDir, { force: true, recursive: true });
   });
 
-  it('should create watcher setup', async () => {
-    const initOutput = await exec('watcher -i', { cwd: mockDir });
+  it('should create ctrunner setup', async () => {
+    const initOutput = await exec('ctrunner -i', { cwd: mockDir });
 
     expect(initOutput.stdout).toContain(Icons.check);
   });
 
-  it('should fail creating watcher setup', async () => {
-    const initOutput = await exec('watcher -i', { cwd: mockDir });
+  it('should fail creating ctrunner setup', async () => {
+    const initOutput = await exec('ctrunner -i', { cwd: mockDir });
 
     expect(initOutput.stdout).toContain(Icons.times);
   });

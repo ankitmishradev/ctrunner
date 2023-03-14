@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FSWatcher, WatchOptions } from 'chokidar';
 
-export interface WatcherConfig {
+export interface CTRunnerConfig {
   root: string;
   nodes: any;
   options: WatchOptions;
@@ -44,5 +44,5 @@ export interface BatchMeta extends Batch {
 export interface Store {
   config: Configuration;
   batches: Batch[];
-  watcher: FSWatcher;
+  ctrunner: FSWatcher;
 }

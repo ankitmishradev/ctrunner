@@ -1,42 +1,44 @@
-# watcher
+# ctrunner ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ankitmishradev/ctrunner/build.yml) [![CodeFactor](https://www.codefactor.io/repository/github/ankitmishradev/ctrunner/badge)](https://www.codefactor.io/repository/github/ankitmishradev/ctrunner) ![GitHub top language](https://img.shields.io/github/languages/top/ankitmishradev/ctrunner)
 
 Run centralized tasks on inter-related or individual projects when a file system event (add, change, directory add, etc.) is received. Watcher is best suited to automatically handle common tasks while working on multiple projects simultaneously.
 
-Watcher does not require any integration with your source code. You can setup watcher at the root of where all your projects reside because watcher can only watch nodes below it's current position.
+Watcher does not require any integration with your source code. You can setup ctrunner at the root of where all your projects reside because ctrunner can only watch nodes below it's current position.
+
+See [example](./example/example-1/), which demonstrates a simple use case of ctrunner.
 
 ## Installation
 
 ```cmd
-npm i -D watcher
+npm i -D ctrunner
 ```
 
 or
 
 ```cmd
-yarn add --dev watcher
+yarn add --dev ctrunner
 ```
 
-## Terms in watcher
+## Terms in ctrunner
 
-- **`Batch`** : In watcher batch refers to information of a project or a directory inside watcher project, where you might want to run centralized tasks. You can define batches in [Batch File](#2-batches-file).
+- **`Batch`** : In ctrunner batch refers to information of a project or a directory inside ctrunner project, where you might want to run centralized tasks. You can define batches in [Batch File](#2-batches-file).
 
 ## Setup
 
-Create a `.watcher` directory at root, we can call this directory watcher setup.
+Create a `.ctrunner` directory at root, we can call this directory ctrunner setup.
 
 To create a simple setup automatically you can use the below command
 
 ```cmd
-watcher -i
+ctrunner -i
 ```
 
-It will create a basic watcher setup in the current working directory. A watcher setup basically has 3 things.
+It will create a basic ctrunner setup in the current working directory. A ctrunner setup basically has 3 things.
 
 ### 1. Config File
 
-Config file consists of global settings for watcher. Config file name should be `config` with `.js` or `.ts` extension only. Configuration can contain following properties
+Config file consists of global settings for ctrunner. Config file name should be `config` with `.js` or `.ts` extension only. Configuration can contain following properties
 
-- **name:** Name of watcher project.
+- **name:** Name of ctrunner project.
 - **showEventOrigin:** If true, path where event occured will be displayed in the CLI.
 - **ignore:** If path where event occured matches any of the given string, or string with glob patterns, further execution for that event will be skipped.
 
@@ -147,56 +149,56 @@ const taskOne = (payload, send) => {
 export default taskOne;
 ```
 
-Each task will have two parameters `payload` and `send`. `payload` is supplied from task definition provided in `Batch File`. `send` is a function, you can use to inform watcher when to pass the task and when to fail the task. `send` function accepts a single parameter of type object, which can have the following properties: `status`, `error` and `message`. If `status` is true `error` will be ignored otherwise `message` will be ignored.
+Each task will have two parameters `payload` and `send`. `payload` is supplied from task definition provided in `Batch File`. `send` is a function, you can use to inform ctrunner when to pass the task and when to fail the task. `send` function accepts a single parameter of type object, which can have the following properties: `status`, `error` and `message`. If `status` is true `error` will be ignored otherwise `message` will be ignored.
 
 ## Usage
 
-After completing setup, you can start watcher by following command:
+After completing setup, you can start ctrunner by following command:
 
 ```cmd
-watcher
+ctrunner
 ```
 
-> This process can take upto a minute to start watcher so any event during this time won't be registered by watcher.
+> This process can take upto a minute to start ctrunner so any event during this time won't be registered by ctrunner.
 
-After successful start, you can start working on your project and watcher will take care of all the event occurences and running the centralized tasks automatically.
+After successful start, you can start working on your project and ctrunner will take care of all the event occurences and running the centralized tasks automatically.
 
 ### Options
 
-- **init:** Create a new watcher setup
+- **init:** Create a new ctrunner setup
 
 ```cmd
-watcher -i
+ctrunner -i
 
-watcher --init
+ctrunner --init
 ```
 
-- **clean:** Clean the watcher setup by removing temporary configuration and build files.
+- **clean:** Clean the ctrunner setup by removing temporary configuration and build files.
 
 ```cmd
-watcher -c
+ctrunner -c
 
-watcher --clean
+ctrunner --clean
 ```
 
-- **help:** Display the help for watcher command
+- **help:** Display the help for ctrunner command
 
 ```cmd
-watcher -h
+ctrunner -h
 
-watcher --help
+ctrunner --help
 ```
 
 ## Troubleshoots
 
-1. **`watcher -i` command failed without any error**
+1. **`ctrunner -i` command failed without any error**
 
-   **Solution:** Before using this command, make sure that `.watcher` directory is not already present where you want to create the setup. Because watcher sees this directory as a setup directory, it won't reinitialize.
+   **Solution:** Before using this command, make sure that `.ctrunner` directory is not already present where you want to create the setup. Because ctrunner sees this directory as a setup directory, it won't reinitialize.
 
 ## Contributions
 
 Contributions to this project are most welcomed.
 
-If you find bugs or want more features, but don't know how to fix/implement them, please fill an [issue](https://github.com/ankitmishradev/watcher/issues).
+If you find bugs or want more features, but don't know how to fix/implement them, please fill an [issue](https://github.com/ankitmishradev/ctrunner/issues).
 
-If you fixed bugs or implemented new features, please send a [pull request](https://github.com/ankitmishradev/watcher/pulls).
+If you fixed bugs or implemented new features, please send a [pull request](https://github.com/ankitmishradev/ctrunner/pulls).
